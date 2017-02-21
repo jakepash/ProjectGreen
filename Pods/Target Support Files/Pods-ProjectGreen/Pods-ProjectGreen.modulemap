@@ -1,0 +1,6 @@
+framework module Pods_ProjectGreen {
+  umbrella header "Pods-ProjectGreen-umbrella.h"
+
+  export *
+  module * { export * }
+}
