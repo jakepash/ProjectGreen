@@ -15,28 +15,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+//    let password = "adamadam"
+//    let email = "adameli@gmail.com"
+//    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        FIRApp.configure()
         
-        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
-        
-        
-        if launchedBefore  {
-            // Not first launch
-            
-            print("Not first launch.")
-            
-            
-        }
-        else {
-            
-            // Is first launch
-            
-            print("First launch, setting UserDefault.")
-            UserDefaults.standard.set(true, forKey: "launchedBefore")
-        }
-        
+//        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
+//            print ("user already exists! Trying to sign in")
+//            
+//            
+//            FIRAuth.auth()?.signIn(withEmail: self.email, password: self.password) { (user, error) in
+//                print("user signed in!")
+//            }
+//        }
         
         return true
       

@@ -627,7 +627,7 @@
 				INFOPLIST_FILE = ProjectGreen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = manzanitalabs.ProjectGreen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manzanitalabs.ProjectGreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -642,7 +642,7 @@
 				INFOPLIST_FILE = ProjectGreen/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = manzanitalabs.ProjectGreen;
+				PRODUCT_BUNDLE_IDENTIFIER = com.manzanitalabs.ProjectGreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

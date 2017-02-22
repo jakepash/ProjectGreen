@@ -12,16 +12,44 @@ import FirebaseAuth
 
 
 class SignInViewController: UIViewController {
+    
+    
+    @IBOutlet weak var Username: UITextField!
+    
+    
+    let password = "adamadam"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        FIRApp.configure()
         
         
         
         
         
     }
+
+    
+    @IBAction func ClickSignIn(_ sender: Any) {
+        
+        let email = self.Username.text
+        
+        
+        
+        
+        FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
+            print ("Created user / user already exists! Trying to sign in")
+            
+            FIRAuth.auth()?.signIn(withEmail: (email)!, password: self.password) { (user, error) in
+                print("user signed in!")
+            }
+        }
+        
+        
+        
+    }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

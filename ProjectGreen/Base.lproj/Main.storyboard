@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vL6-3N-Qff">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Sign In View Controller-->
         <scene sceneID="YJ1-VU-uJn">
             <objects>
-                <viewController id="vL6-3N-Qff" sceneMemberID="viewController">
+                <viewController id="vL6-3N-Qff" customClass="SignInViewController" customModule="ProjectGreen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="TWw-F2-TeS"/>
                         <viewControllerLayoutGuide type="bottom" id="Vep-SX-58P"/>
@@ -20,12 +21,44 @@
                     <view key="view" contentMode="scaleToFill" id="VB0-nk-0CW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wda-Sj-v6N">
+                                <rect key="frame" x="74" y="304" width="227" height="122"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="122" id="Y4z-dy-2Sm"/>
+                                    <constraint firstAttribute="width" constant="227" id="gYY-LO-tV2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="Sign In/Sign up"/>
+                                <connections>
+                                    <action selector="ClickSignIn:" destination="vL6-3N-Qff" eventType="touchUpInside" id="qxm-hN-Enb"/>
+                                    <segue destination="BV1-FR-VrT" kind="show" id="piQ-Dk-cdA"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fEH-Z9-K0p">
+                                <rect key="frame" x="97" y="170" width="181" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="wda-Sj-v6N" firstAttribute="centerX" secondItem="VB0-nk-0CW" secondAttribute="centerX" id="1pE-3g-6Rw"/>
+                            <constraint firstItem="fEH-Z9-K0p" firstAttribute="leading" secondItem="VB0-nk-0CW" secondAttribute="leadingMargin" constant="81" id="9HS-bO-1TB"/>
+                            <constraint firstItem="fEH-Z9-K0p" firstAttribute="top" secondItem="TWw-F2-TeS" secondAttribute="bottom" constant="150" id="Edt-xP-L19"/>
+                            <constraint firstItem="fEH-Z9-K0p" firstAttribute="centerX" secondItem="wda-Sj-v6N" secondAttribute="centerX" id="LGB-yX-ZqO"/>
+                            <constraint firstItem="Vep-SX-58P" firstAttribute="top" secondItem="wda-Sj-v6N" secondAttribute="bottom" constant="241" id="l6r-GM-etJ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="Username" destination="fEH-Z9-K0p" id="6Cg-lU-cOF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="s7d-Ih-v4D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-611" y="154"/>
+            <point key="canvasLocation" x="-772" y="37.331334332833585"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
