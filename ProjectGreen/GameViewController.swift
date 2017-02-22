@@ -64,12 +64,29 @@ class GameViewController: UIViewController {
     @IBAction func PushDatabase(_ sender: Any) {
         
         ref = FIRDatabase.database().reference()
+        
         let user = FIRAuth.auth()?.currentUser
         let displayName = user?.displayName
         let uid = user?.uid
 
         
-        self.ref.child("users").child(uid!).setValue(["DisplayName": displayName])
+        self.ref.child("Users").child(uid!).setValue(["DisplayName": displayName])
+        
+        
+    }
+    
+    
+    @IBAction func ListenData(_ sender: Any) {
+        
+        ref = FIRDatabase.database().reference()
+        
+            ref.observe(FIRDataEventType.value, with: { (snapshot) in
+                let postDict = snapshot.value as? [String : AnyObject] ?? [:]
+                    // ...
+       
+            
+            })
+        
         
     }
     
