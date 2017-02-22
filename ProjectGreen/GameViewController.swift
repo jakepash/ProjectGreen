@@ -9,8 +9,14 @@
 import UIKit
 import SpriteKit
 import GameplayKit
+import Firebase
+import FirebaseDatabase
+import FirebaseAuth
 
 class GameViewController: UIViewController {
+    
+    var ref : FIRDatabaseReference!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,6 +61,17 @@ class GameViewController: UIViewController {
     }
 
     
+    @IBAction func PushDatabase(_ sender: Any) {
+        
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let username = user?.email
+        let uid = user?.uid
+
+        
+        self.ref.child("users").child(uid!).setValue(["email": username])
+        
+    }
     
     
     override func didReceiveMemoryWarning() {
