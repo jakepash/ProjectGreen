@@ -59,7 +59,24 @@ class GameViewController: UIViewController {
             return .all
         }
     }
-
+    
+    
+    
+    
+    @IBAction func SessionCreate(_ sender: Any) {
+        
+        let uuid = UUID().uuidString
+        
+        ref = FIRDatabase.database().reference()
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        self.ref.child("Lobbies").child(uuid).child("Players").setValue(["users1": uid])
+        
+        
+    }
     
     @IBAction func PushDatabase(_ sender: Any) {
         
@@ -74,21 +91,31 @@ class GameViewController: UIViewController {
         
         
     }
+
+   
     
     
-    @IBAction func ListenData(_ sender: Any) {
-        
-        ref = FIRDatabase.database().reference()
-        
-            ref.observe(FIRDataEventType.value, with: { (snapshot) in
-                let postDict = snapshot.value as? [String : AnyObject] ?? [:]
-                    // ...
-       
-            
-            })
-        
-        
-    }
+    
+//    func ListenData() {
+//        
+//        let user = FIRAuth.auth()?.currentUser
+//        let uid = user?.uid
+//        
+//        
+//        ref = FIRDatabase.database().reference()
+//        
+//        ref.child("Users").child(uid!).observe(FIRDataEventType.value, with: { (snapshot) in
+//            _ = snapshot.value as? [String : AnyObject] ?? [:]
+//                print ("something changed!")
+//        })
+//    
+//    
+//    }
+    
+
+    
+    
+    
     
     
     override func didReceiveMemoryWarning() {
