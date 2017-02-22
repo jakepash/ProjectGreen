@@ -14,8 +14,10 @@ import FirebaseAuth
 class SignInViewController: UIViewController {
     
     
-    @IBOutlet weak var Username: UITextField!
+
+    @IBOutlet weak var email: UITextField!
     
+    @IBOutlet weak var username: UITextField!
     
     let password = "adamadam"
     
@@ -32,9 +34,9 @@ class SignInViewController: UIViewController {
     
     @IBAction func ClickSignIn(_ sender: Any) {
         
-        let email = self.Username.text
+        let email = self.email.text
         
-        
+        let username = self.username.text
         
         
         FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
@@ -43,6 +45,14 @@ class SignInViewController: UIViewController {
             FIRAuth.auth()?.signIn(withEmail: (email)!, password: self.password) { (user, error) in
                 print("user signed in!")
             }
+        }
+        
+        let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
+        
+        changeRequest?.displayName = username
+        
+        changeRequest?.commitChanges() { (error) in
+            print("error")
         }
         
         
