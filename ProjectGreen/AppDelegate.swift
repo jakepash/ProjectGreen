@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +17,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        
+        let launchedBefore = UserDefaults.standard.bool(forKey: "launchedBefore")
+        
+        
+        if launchedBefore  {
+            // Not first launch
+            
+            print("Not first launch.")
+            
+            
+        }
+        else {
+            
+            // Is first launch
+            
+            print("First launch, setting UserDefault.")
+            UserDefaults.standard.set(true, forKey: "launchedBefore")
+        }
+        
+        
         return true
+      
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
