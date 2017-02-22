@@ -65,11 +65,11 @@ class GameViewController: UIViewController {
         
         ref = FIRDatabase.database().reference()
         let user = FIRAuth.auth()?.currentUser
-        let username = user?.displayName
+        let displayName = user?.displayName
         let uid = user?.uid
 
         
-        self.ref.child("users").child(uid!).setValue(["DisplayName": username])
+        self.ref.child("users").child(uid!).setValue(["DisplayName": displayName])
         
     }
     

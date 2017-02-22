@@ -51,10 +51,7 @@ class SignInViewController: UIViewController {
         
         changeRequest?.displayName = username
         
-        changeRequest?.commitChanges() { (error) in
-            print("error")
-        }
-        
+        changeRequest?.commitChanges()        
         
         
     }
