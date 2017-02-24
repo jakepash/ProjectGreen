@@ -109,7 +109,15 @@
                                 <state key="normal" title="Lobby Create"/>
                                 <connections>
                                     <action selector="LobbyCreate:" destination="BV1-FR-VrT" eventType="touchUpInside" id="8Je-OE-dZj"/>
-                                    <segue destination="L3a-Zr-RP7" kind="show" id="1go-3L-gcr"/>
+                                    <segue destination="4cE-Lg-7vG" kind="show" id="C45-RJ-Ghh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UWx-lL-d6y">
+                                <rect key="frame" x="0.0" y="608" width="93" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="vL6-3N-Qff" kind="show" id="QeM-dR-ang"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -129,35 +137,33 @@
             <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
         </scene>
         <!--Session View Controller-->
-        <scene sceneID="VaD-v2-gR5">
+        <scene sceneID="zKh-Hu-C8C">
             <objects>
-                <viewController id="L3a-Zr-RP7" customClass="SessionViewController" customModule="ProjectGreen" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="4cE-Lg-7vG" customClass="SessionViewController" customModule="ProjectGreen" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="q3X-D4-nFR"/>
-                        <viewControllerLayoutGuide type="bottom" id="Y7f-MX-tnV"/>
+                        <viewControllerLayoutGuide type="top" id="rBU-Qu-d9n"/>
+                        <viewControllerLayoutGuide type="bottom" id="jOo-Uk-4gl"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bpL-sW-cYh">
+                    <view key="view" contentMode="scaleToFill" id="Qfj-zS-TkM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nrS-dz-pW4">
-                                <rect key="frame" x="107" y="55" width="161" height="75"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-GL-l2G">
+                                <rect key="frame" x="121" y="46" width="133" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Finish Game">
-                                    <color key="titleColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
+                                <state key="normal" title="Join Lobby"/>
                                 <connections>
-                                    <action selector="FinishGame:" destination="L3a-Zr-RP7" eventType="touchUpInside" id="yd8-S0-Zwf"/>
+                                    <action selector="JoinLobby:" destination="4cE-Lg-7vG" eventType="touchUpInside" id="Cg5-3Z-rmB"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.41176470590000003" green="0.6588235294" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="RJq-t8-eNa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wf7-Or-zV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="768.79999999999995" y="43.628185907046479"/>
+            <point key="canvasLocation" x="735.20000000000005" y="39.130434782608695"/>
         </scene>
     </scenes>
 </document>

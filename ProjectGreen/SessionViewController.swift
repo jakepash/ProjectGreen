@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import FirebaseAuth
+import Firebase
+
+
 
 class SessionViewController: UIViewController {
+    
+    
+    var ref : FIRDatabaseReference!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,16 +27,35 @@ class SessionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    @IBAction func JoinLobby(_ sender: Any) {
+        
+        ref = FIRDatabase.database().reference().child("Lobbies")
+        
+        
+        // return all
+        ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
+            for child in FIRDataSnap.children.allObjects {
+                let key = (child as AnyObject).key as String
+                
+                self.ref.child(key).child("Players").observeSingleEvent(of: .value , with: { (FIR) in
+                    for data in FIR.children.allObjects {
+                        let key1 = (data as AnyObject).key as String
+                        print (key1)
+                        
+                    
+                    
+                    }
+                })
+            }
+        
+        
+            
+    })
+        
+        
+        
+        
     }
-    */
-
 }

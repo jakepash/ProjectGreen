@@ -16,7 +16,7 @@ import FirebaseAuth
 class GameViewController: UIViewController {
     
     var ref : FIRDatabaseReference!
-    
+    let uuid = UUID().uuidString
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,23 +60,8 @@ class GameViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    @IBAction func SessionCreate(_ sender: Any) {
-        
-        let uuid = UUID().uuidString
-        
-        ref = FIRDatabase.database().reference()
-        
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
-        
-        
-        self.ref.child("Lobbies").child(uuid).child("Players").setValue(["users1": uid])
-        
-        
-    }
+   
+
     
     @IBAction func PushDatabase(_ sender: Any) {
         
@@ -91,28 +76,33 @@ class GameViewController: UIViewController {
         
         
     }
+    
+    
+    
+    
+    // create new lobby
+    @IBAction func LobbyCreate(_ sender: Any) {
+        
+        
+        
+        ref = FIRDatabase.database().reference()
+        
+            let user = FIRAuth.auth()?.currentUser
+            let displayName = user?.displayName
+            let uid = user?.uid
+        
+        
 
-   
+            self.ref.child("Lobbies").child(self.uuid).child("Players").setValue(["user1": uid])
+            self.ref.child("LobbyUUID").setValue(["UUID": uuid])
+            self.ref.child("Users").child(uid!).setValue(["DisplayName": displayName])
+            
+        
+    }
     
     
     
-//    func ListenData() {
-//        
-//        let user = FIRAuth.auth()?.currentUser
-//        let uid = user?.uid
-//        
-//        
-//        ref = FIRDatabase.database().reference()
-//        
-//        ref.child("Users").child(uid!).observe(FIRDataEventType.value, with: { (snapshot) in
-//            _ = snapshot.value as? [String : AnyObject] ?? [:]
-//                print ("something changed!")
-//        })
-//    
-//    
-//    }
     
-
     
     
     

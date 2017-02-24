@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FIRApp.configure()
         
+                
 //        FIRAuth.auth()?.createUser(withEmail: email, password: password) { (user, error) in
 //            print ("user already exists! Trying to sign in")
 //            
