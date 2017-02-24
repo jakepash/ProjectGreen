@@ -34,20 +34,35 @@ class SessionViewController: UIViewController {
         ref = FIRDatabase.database().reference().child("Lobbies")
         
         
-        // return all
         ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
             for child in FIRDataSnap.children.allObjects {
                 let key = (child as AnyObject).key as String
+                let Array = [key]
+                for keychain in Array {
+                    self.ref.child(keychain).child("Players").observeSingleEvent(of: .value, with: { (AnotherOne) in
+                        if AnotherOne.childrenCount < 2 {
+                            print("Can Join")
+                        }
+                        else {
+                            print("Can't Join... 2 players inside")
+                        }
+                    })
                 
-                self.ref.child(key).child("Players").observeSingleEvent(of: .value , with: { (FIR) in
-                    for data in FIR.children.allObjects {
-                        let key1 = (data as AnyObject).key as String
-                        print (key1)
-                        
-                    
-                    
-                    }
-                })
+                }
+                
+                
+                
+                
+
+//                self.ref.child(key).child("Players").observeSingleEvent(of: .value , with: { (FIR) in
+//                    for data in FIR.children.allObjects {
+//                        let key1 = (data as AnyObject).key as String
+//                        print (key1)
+//                        
+//                    
+//                    
+//                    }
+//                })
             }
         
         
