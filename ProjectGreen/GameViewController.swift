@@ -18,6 +18,9 @@ class GameViewController: UIViewController {
     var ref : FIRDatabaseReference!
     let uuid = UUID().uuidString
 
+    @IBOutlet weak var LobbyName: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -91,13 +94,11 @@ class GameViewController: UIViewController {
             let displayName = user?.displayName
             let uid = user?.uid
         
-        
+            let LobbyNameStr = self.LobbyName.text
 
             self.ref.child("Lobbies").child(self.uuid).child("Players").setValue(["user1": uid])
-            self.ref.child("LobbyUUID").setValue(["UUID": uuid])
+            self.ref.child("Lobbies").child(self.uuid).child("LobbyName").setValue(["LobbyName": LobbyNameStr])
             self.ref.child("Users").child(uid!).setValue(["DisplayName": displayName])
-            
-        
     }
     
     

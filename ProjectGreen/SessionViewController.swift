@@ -14,7 +14,7 @@ import Firebase
 
 class SessionViewController: UIViewController {
     
-    
+    @IBOutlet weak var PickerView: UIPickerView!
     var ref : FIRDatabaseReference!
 
     override func viewDidLoad() {
@@ -32,6 +32,7 @@ class SessionViewController: UIViewController {
     @IBAction func JoinLobby(_ sender: Any) {
         
         ref = FIRDatabase.database().reference().child("Lobbies")
+        let key = String()
         
         
         ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
@@ -41,7 +42,10 @@ class SessionViewController: UIViewController {
                 for keychain in Array {
                     self.ref.child(keychain).child("Players").observeSingleEvent(of: .value, with: { (AnotherOne) in
                         if AnotherOne.childrenCount < 2 {
-                            print("Can Join")
+                            print("Joining...")
+                            // Join Lobby
+                            
+                            
                         }
                         else {
                             print("Can't Join... 2 players inside")
@@ -49,28 +53,25 @@ class SessionViewController: UIViewController {
                     })
                 
                 }
-                
-                
-                
-                
-
-//                self.ref.child(key).child("Players").observeSingleEvent(of: .value , with: { (FIR) in
-//                    for data in FIR.children.allObjects {
-//                        let key1 = (data as AnyObject).key as String
-//                        print (key1)
-//                        
-//                    
-//                    
-//                    }
-//                })
             }
         
         
             
-    })
+        })
+        
+        //...
+        print (key)
         
         
         
+        
+        
+        
+        
+        
+        
+       
         
     }
+
 }
