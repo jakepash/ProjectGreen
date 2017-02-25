@@ -32,27 +32,25 @@ class SessionViewController: UIViewController {
     @IBAction func JoinLobby(_ sender: Any) {
         
         ref = FIRDatabase.database().reference().child("Lobbies")
-        let key = String()
-        
+        //let key = String()
+        var myArray = ["0"]
         
         ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
             for child in FIRDataSnap.children.allObjects {
                 let key = (child as AnyObject).key as String
-                let Array = [key]
-                for keychain in Array {
-                    self.ref.child(keychain).child("Players").observeSingleEvent(of: .value, with: { (AnotherOne) in
-                        if AnotherOne.childrenCount < 2 {
-                            print("Joining...")
-                            // Join Lobby
-                            
-                            
-                        }
-                        else {
-                            print("Can't Join... 2 players inside")
-                        }
-                    })
+                myArray.append(key)
+            }
+            for (_, element) in myArray.enumerated() {
+                self.ref.child(element).child("Players").observeSingleEvent(of: .value, with: { (Snap) in
+                    if Snap.childrenCount < 2 {
+                        print ("Joining...")
+                    }
+                    else {
+                        print ("Not Joining...")
+                    
+                    }
+                })
                 
-                }
             }
         
         
@@ -60,8 +58,6 @@ class SessionViewController: UIViewController {
         })
         
         //...
-        print (key)
-        
         
         
         
