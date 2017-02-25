@@ -125,14 +125,6 @@
                                     <segue destination="4cE-Lg-7vG" kind="show" id="C45-RJ-Ghh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bgN-8k-kSi">
-                                <rect key="frame" x="264" y="612" width="95" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Choose lobby"/>
-                                <connections>
-                                    <segue destination="2Lx-yf-t2k" kind="show" id="U36-Qp-4T9"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -171,17 +163,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-GL-l2G">
-                                <rect key="frame" x="121" y="324" width="133" height="65"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="133" id="iQE-gy-GLb"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" title="Join Lobby"/>
-                                <connections>
-                                    <action selector="JoinLobby:" destination="4cE-Lg-7vG" eventType="touchUpInside" id="Cg5-3Z-rmB"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eET-Bw-n9q">
                                 <rect key="frame" x="22" y="629" width="34" height="30"/>
                                 <state key="normal" title="back"/>
@@ -189,44 +170,50 @@
                                     <segue destination="BV1-FR-VrT" kind="show" id="fAR-s6-q3D"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CLE-Zh-Iod">
+                                <rect key="frame" x="164" y="119" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="PickerCheck:" destination="4cE-Lg-7vG" eventType="touchUpInside" id="TGo-HM-WF9"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJ0-sj-BPo">
+                                <rect key="frame" x="0.0" y="363" width="375" height="216"/>
+                            </pickerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jwJ-GL-l2G">
+                                <rect key="frame" x="121" y="207" width="133" height="65"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="4eQ-No-uYU"/>
+                                    <constraint firstAttribute="width" constant="133" id="iF1-H0-UX8"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Join Lobby"/>
+                                <connections>
+                                    <action selector="JoinLobby:" destination="4cE-Lg-7vG" eventType="touchUpInside" id="Cg5-3Z-rmB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jwJ-GL-l2G" firstAttribute="centerX" secondItem="Qfj-zS-TkM" secondAttribute="centerX" id="4OA-01-fpx"/>
-                            <constraint firstItem="jOo-Uk-4gl" firstAttribute="top" secondItem="eET-Bw-n9q" secondAttribute="bottom" constant="8" symbolic="YES" id="DO8-pR-g0l"/>
-                            <constraint firstItem="jOo-Uk-4gl" firstAttribute="top" secondItem="jwJ-GL-l2G" secondAttribute="bottom" constant="278" id="KC6-c1-qGy"/>
-                            <constraint firstItem="eET-Bw-n9q" firstAttribute="leading" secondItem="Qfj-zS-TkM" secondAttribute="leadingMargin" constant="6" id="dDK-Jg-0ll"/>
-                            <constraint firstItem="jwJ-GL-l2G" firstAttribute="top" secondItem="rBU-Qu-d9n" secondAttribute="bottom" constant="304" id="iQ2-Hj-bvu"/>
+                            <constraint firstItem="bJ0-sj-BPo" firstAttribute="leading" secondItem="Qfj-zS-TkM" secondAttribute="leading" id="238-Tu-fbt"/>
+                            <constraint firstItem="bJ0-sj-BPo" firstAttribute="top" secondItem="jwJ-GL-l2G" secondAttribute="bottom" constant="91" id="8Oj-fO-HUk"/>
+                            <constraint firstItem="CLE-Zh-Iod" firstAttribute="centerX" secondItem="jwJ-GL-l2G" secondAttribute="centerX" id="AIb-6C-9b6"/>
+                            <constraint firstAttribute="trailing" secondItem="bJ0-sj-BPo" secondAttribute="trailing" id="NHj-oR-3Rs"/>
+                            <constraint firstItem="eET-Bw-n9q" firstAttribute="leading" secondItem="Qfj-zS-TkM" secondAttribute="leadingMargin" constant="6" id="RXo-eQ-xEU"/>
+                            <constraint firstItem="jwJ-GL-l2G" firstAttribute="centerX" secondItem="bJ0-sj-BPo" secondAttribute="centerX" id="TLm-IT-2zF"/>
+                            <constraint firstItem="jwJ-GL-l2G" firstAttribute="top" secondItem="CLE-Zh-Iod" secondAttribute="bottom" constant="58" id="UZx-OZ-V8M"/>
+                            <constraint firstItem="eET-Bw-n9q" firstAttribute="top" secondItem="bJ0-sj-BPo" secondAttribute="bottom" constant="50" id="hYT-BE-3Fi"/>
+                            <constraint firstItem="jOo-Uk-4gl" firstAttribute="top" secondItem="eET-Bw-n9q" secondAttribute="bottom" constant="8" symbolic="YES" id="q2H-tJ-JbI"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="PickArray" destination="bJ0-sj-BPo" id="ijJ-Qm-ovi"/>
+                        <outlet property="pickerView" destination="bJ0-sj-BPo" id="j4L-3b-tha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wf7-Or-zV0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="735.20000000000005" y="39.130434782608695"/>
-        </scene>
-        <!--Choose View Controller-->
-        <scene sceneID="k7m-v6-SkZ">
-            <objects>
-                <viewController id="2Lx-yf-t2k" customClass="ChooseViewController" customModule="ProjectGreen" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="KF6-06-7Ua"/>
-                        <viewControllerLayoutGuide type="bottom" id="gPa-cM-uTj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="twb-v6-yOy">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KKj-rG-zW7">
-                                <rect key="frame" x="0.0" y="117" width="375" height="216"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            </pickerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ovW-tm-jZr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="257" y="841"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
