@@ -8,6 +8,8 @@ target 'ProjectGreen' do
 pod 'Firebase'
 pod 'Firebase/Database'
 pod 'Firebase/Auth'
+pod "QRCode"
+pod 'SwiftQRCode'
 
   # Pods for ProjectGreen
 

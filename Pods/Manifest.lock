@@ -34,11 +34,15 @@ PODS:
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.1)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.8)
+  - QRCode (2.0)
+  - SwiftQRCode (3.0.2)
 
 DEPENDENCIES:
   - Firebase
   - Firebase/Auth
   - Firebase/Database
+  - QRCode
+  - SwiftQRCode
 
 SPEC CHECKSUMS:
   Firebase: 5bc34d7b5ff5792e3386c8b28dc6265deeab0da4
@@ -49,7 +53,9 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 6f8d8b28b7e345549ac471071608170b31cb4977
+  QRCode: f98a1886c8f37523704a7512a4c0cd45b34c18a4
+  SwiftQRCode: 280589699d84195c2c573011aa52f2c015c31c34
 
-PODFILE CHECKSUM: 01ed00e2aa7fe6a636c29944df7935e7acf140d9
+PODFILE CHECKSUM: 47dafe03ee157682472f8f538f838e0a10a4a86b
 
 COCOAPODS: 1.2.0

@@ -14,6 +14,7 @@ import FirebaseAuth
 class SignInViewController: UIViewController {
     
     
+    @IBOutlet weak var FirstLaunchTxt: UILabel!
 
     @IBOutlet weak var email: UITextField!
     
@@ -26,8 +27,14 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
+        
+                
     }
-
+    
+    
     
     @IBAction func ClickSignIn(_ sender: Any) {
         
@@ -59,7 +66,7 @@ class SignInViewController: UIViewController {
         
     }
     
-    
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

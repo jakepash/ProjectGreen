@@ -29,10 +29,35 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>QRCode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftQRCode.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>030199DEB2172AA51457AE5AD23FD4C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>107A9565F9DF88517DFD3E28C05B2B96</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>51D5DCAA736C33149AF887D1D078278E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>7530449519671ACFE3032ED0D9ACF865</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -48,11 +73,6 @@
 			<true/>
 		</dict>
 		<key>C907ABC286BF677EB7F7AF515CDBE117</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>CB8EF5D33C840E8E74D5A49603D1826E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

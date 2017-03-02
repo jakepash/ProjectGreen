@@ -13,6 +13,8 @@ import GameplayKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
+//import QRCode
+
 
 class GameViewController: UIViewController{
     
@@ -23,7 +25,8 @@ class GameViewController: UIViewController{
     @IBOutlet weak var LobbyName: UITextField!
     
     var availableLobbyArray = [String]()
-    
+
+    @IBOutlet weak var imageView: UIImageView!
     
     
     override func viewDidLoad() {
@@ -37,6 +40,11 @@ class GameViewController: UIViewController{
         
         view.addGestureRecognizer(tap)
         
+        
+        
+        
+        
+        
         print ("Loaded")
     }      
         
@@ -44,7 +52,6 @@ class GameViewController: UIViewController{
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         view.endEditing(true)
     }
-    
 
     
     
@@ -74,6 +81,7 @@ class GameViewController: UIViewController{
         
         
     }
+    
     
     func CreateArrayCanJoinLobbies() {
     
@@ -119,7 +127,27 @@ class GameViewController: UIViewController{
         }
             
       }
+    
+    
+    // QR codes...
+//    @IBAction func JoinWithQR(_ sender: Any) {
+//        
+//        let LobbyNameStr = self.LobbyName.text
+//        
+//        let url = "https://myproject-e9dfb.firebaseio.com/Lobbies/\(LobbyNameStr!)/.json"
+//        
+//        imageView.image = {
+//            var qrCode = QRCode(url)!
+//            qrCode.size = self.imageView.bounds.size
+//            qrCode.color = CIColor(rgba: "2980b9")
+//            return qrCode.image
+//        }()
+//        
+//    }
 
+    
+    
+    
     
     
   }
