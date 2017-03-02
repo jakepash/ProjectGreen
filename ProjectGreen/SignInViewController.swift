@@ -46,21 +46,17 @@ class SignInViewController: UIViewController {
         let username = self.username.text
         
         
-            FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
-                print ("Creating or signing in")
-                FIRAuth.auth()?.signIn(withEmail: (email)!, password: self.password) { (user, error) in
-                    print("user signed in!")
-            }
-
+        FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
+            print ("Creating User")
         }
-        
+        UserDefaults.standard.set(email, forKey: "email")
         let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
         
         changeRequest?.displayName = username
         
         changeRequest?.commitChanges()
         
-        self.ref.child("Users").child(uid!).setValue(["DisplayName": username])
+        self.ref.child("Users").child(uid!).setValue(["DisplayName": username,"Email": email])
         
         
         

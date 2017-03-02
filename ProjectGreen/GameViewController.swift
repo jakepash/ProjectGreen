@@ -21,6 +21,7 @@ class GameViewController: UIViewController{
     var ref : FIRDatabaseReference!
     var Joinref :FIRDatabaseReference!
     var Postref :FIRDatabaseReference!
+    let password = "adamadam"
 
     @IBOutlet weak var LobbyName: UITextField!
     
@@ -31,7 +32,7 @@ class GameViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.CreateArrayCanJoinLobbies()
+        
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissKeyboard))
         
@@ -147,7 +148,20 @@ class GameViewController: UIViewController{
 
     
     
-    
+   
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let keychain = UserDefaults.standard.string(forKey: "email")
+        print (keychain!)
+        
+        FIRAuth.auth()?.signIn(withEmail: (keychain)!, password: password) { (user, error) in
+            print ("Signed in with user: \(user)")
+        }
+        
+        
+        self.CreateArrayCanJoinLobbies()
+        
+    }
     
     
   }
