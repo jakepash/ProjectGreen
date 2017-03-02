@@ -11,100 +11,146 @@ import GameplayKit
 
 class GameScene: SKScene {
     
-    var entities = [GKEntity]()
-    var graphs = [String : GKGraph]()
+    var landBackground:SKTileMapNode!
+    var objectsTileMap:SKTileMapNode!
     
-    private var lastUpdateTime : TimeInterval = 0
-    private var label : SKLabelNode?
-    private var spinnyNode : SKShapeNode?
+    // constants
+    let waterMaxSpeed: CGFloat = 200
+    let landMaxSpeed: CGFloat = 4000
     
-    override func sceneDidLoad() {
+    // if within threshold range of the target, troop begins slowing
+    let targetThreshold:CGFloat = 200
+    
+    var maxSpeed: CGFloat = 0
+    var acceleration: CGFloat = 0
+    
+    // touch location
+    var targetLocation: CGPoint = .zero
+    
+    // Scene Nodes
+    var troop:SKSpriteNode!
+    var troop1:SKSpriteNode!
 
-        self.lastUpdateTime = 0
+    
+    override func didMove(to view: SKView) {
+        loadSceneNodes()
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        maxSpeed = landMaxSpeed
         
-        // Get label node from scene and store it for use later
-        self.label = self.childNode(withName: "//helloLabel") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
+        //setupObjects()
+    }
+    
+    func loadSceneNodes() {
+        //troop = createNode1(imageNamed: "Circle", name: "troop", pos: targetLocation)
+//        var circle = SKTexture(image: UIImage(named: "Circle")!)
+//        var troop = SKSpriteNode(texture: circle)
+//        troop.position = targetLocation
+//        troop.size = CGSize(width: 75, height: 75)
+//        
+        guard let troop = childNode(withName: "troop") as? SKSpriteNode else {
+            fatalError("Sprite Nodes not loaded")
         }
+        self.troop = troop
         
-        // Create shape node to use during mouse interaction
-        let w = (self.size.width + self.size.height) * 0.05
-        self.spinnyNode = SKShapeNode.init(rectOf: CGSize.init(width: w, height: w), cornerRadius: w * 0.3)
         
-        if let spinnyNode = self.spinnyNode {
-            spinnyNode.lineWidth = 2.5
-            
-            spinnyNode.run(SKAction.repeatForever(SKAction.rotate(byAngle: CGFloat(M_PI), duration: 1)))
-            spinnyNode.run(SKAction.sequence([SKAction.wait(forDuration: 0.5),
-                                              SKAction.fadeOut(withDuration: 0.5),
-                                              SKAction.removeFromParent()]))
+        
+        
+//        guard let tileSet = SKTileSet(named: "Object Tiles") else { fatalError("Object itles set not found")
+//        }
+//        
+//        
+//        objectsTileMap = SKTileMapNode(tileSet: tileSet, columns: columns, rows: rows, tileSize: size)
+//        
+//        
+//        addChild(objectsTileMap)
+//        
+//        let tileGroups = tileSet.tileGroups
+//        
+//        let duckTile = tileGroups.first(where: {$0.name == "Duck"})
+//        let gascanTile = tileGroups.first(where: {$0.name == "Gas Can"})
+
+        guard let landBackground = childNode(withName: "landBackground")
+            as? SKTileMapNode else {
+                fatalError("Background node not loaded")
         }
+        self.landBackground = landBackground
+    }
+    var variable: String!
+    func createNode1(imageNamed: String, name: String, pos: CGPoint) -> SKSpriteNode {
+        let sprite = SKSpriteNode(imageNamed: imageNamed)
+        sprite.position = pos
+        sprite.zPosition = 3.0
+        sprite.size = CGSize(width: 100, height: 100)
+        
+        addChild(sprite)
+        return sprite
     }
     
-    
-    func touchDown(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.green
-            self.addChild(n)
-        }
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.blue
-            self.addChild(n)
-        }
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let n = self.spinnyNode?.copy() as! SKShapeNode? {
-            n.position = pos
-            n.strokeColor = SKColor.red
-            self.addChild(n)
-        }
-    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let label = self.label {
-            label.run(SKAction.init(named: "Pulse")!, withKey: "fadeInOut")
-        }
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        guard let touch = touches.first else { return }
+        targetLocation = touch.location(in: self)
+        print(targetLocation)
+        print("touches began")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        guard let touch = touches.first else { return }
+        targetLocation = touch.location(in: self)
+        print("touches moved")
     }
     
     
     override func update(_ currentTime: TimeInterval) {
-        // Called before each frame is rendered
+        let position = troop.position
+        let column = landBackground.tileColumnIndex(fromPosition: position)
+        let row = landBackground.tileRowIndex(fromPosition: position)
+        let tile = landBackground.tileDefinition(atColumn: column, row: row)
         
-        // Initialize _lastUpdateTime if it has not already been
-        if (self.lastUpdateTime == 0) {
-            self.lastUpdateTime = currentTime
+        if tile == nil {
+            maxSpeed = waterMaxSpeed
+            //print("water")
+        } else {
+            maxSpeed = landMaxSpeed
+            //print("grass")
+        }
+    }
+    override func didSimulatePhysics() {
+        
+        let offset = CGPoint(x: targetLocation.x - troop.position.x,
+                             y: targetLocation.y - troop.position.y)
+        let distance = sqrt(offset.x * offset.x + offset.y * offset.y)
+        let troopDirection = CGPoint(x:offset.x / distance,
+                                   y:offset.y / distance)
+        let troopVelocity = CGPoint(x: troopDirection.x * acceleration,
+                                  y: troopDirection.y * acceleration)
+        
+        troop.physicsBody?.velocity = CGVector(dx: troopVelocity.x, dy: troopVelocity.y)
+        
+        if acceleration > 5 {
+            troop.zRotation = atan2(troopVelocity.y, troopVelocity.x)
         }
         
-        // Calculate time since last update
-        let dt = currentTime - self.lastUpdateTime
+        // update acceleration
+        // troop speeds up to maximum
+        // if within threshold range of the target, troop begins slowing
+        // if maxSpeed has reduced due to different tiles,
+        // may need to decelerate slowly to the new maxSpeed
         
-        // Update entities
-        for entity in self.entities {
-            entity.update(deltaTime: dt)
+        if distance < targetThreshold {
+            let delta = targetThreshold - distance
+            acceleration = acceleration * ((targetThreshold - delta)/targetThreshold)
+            if acceleration < 2 {
+                acceleration = 0
+            }
+        } else {
+            if acceleration > maxSpeed {
+                acceleration -= min(acceleration - maxSpeed, 80)
+            }
+            if acceleration < maxSpeed {
+                acceleration += min(maxSpeed - acceleration, 40)
+            }
         }
         
-        self.lastUpdateTime = currentTime
     }
 }

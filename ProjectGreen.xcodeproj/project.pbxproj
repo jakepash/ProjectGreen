@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98034F321E612347007D7C62 /* ObjectTiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 98034F311E612347007D7C62 /* ObjectTiles.sks */; };
+		9805839B1E5F3E6600C86D78 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9805839A1E5F3E6600C86D78 /* GameScene.sks */; };
+		9805839D1E5F3E8200C86D78 /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9805839C1E5F3E8200C86D78 /* Tiles.sks */; };
 		98E606551E5C8FF40023C275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E606541E5C8FF40023C275 /* AppDelegate.swift */; };
-		98E606571E5C8FF40023C275 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 98E606561E5C8FF40023C275 /* GameScene.sks */; };
 		98E606591E5C8FF40023C275 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 98E606581E5C8FF40023C275 /* Actions.sks */; };
 		98E6065B1E5C8FF40023C275 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6065A1E5C8FF40023C275 /* GameScene.swift */; };
 		98E6065D1E5C8FF40023C275 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E6065C1E5C8FF40023C275 /* GameViewController.swift */; };
@@ -45,10 +47,12 @@
 		5537ED5C5908DBA11F64292B /* Pods_ProjectGreenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A57A45F00161A8702ED7F8B /* Pods-ProjectGreenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreenUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreenUITests/Pods-ProjectGreenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		74F4A61515DDE77B2A3D3013 /* Pods-ProjectGreen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreen/Pods-ProjectGreen.debug.xcconfig"; sourceTree = "<group>"; };
+		98034F311E612347007D7C62 /* ObjectTiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ObjectTiles.sks; sourceTree = "<group>"; };
+		9805839A1E5F3E6600C86D78 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		9805839C1E5F3E8200C86D78 /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
 		988255E0800975DBE63C872F /* Pods-ProjectGreenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreenTests/Pods-ProjectGreenTests.debug.xcconfig"; sourceTree = "<group>"; };
 		98E606511E5C8FF40023C275 /* ProjectGreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProjectGreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		98E606541E5C8FF40023C275 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		98E606561E5C8FF40023C275 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		98E606581E5C8FF40023C275 /* Actions.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Actions.sks; sourceTree = "<group>"; };
 		98E6065A1E5C8FF40023C275 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		98E6065C1E5C8FF40023C275 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -134,14 +138,16 @@
 			isa = PBXGroup;
 			children = (
 				98E606541E5C8FF40023C275 /* AppDelegate.swift */,
-				98E606561E5C8FF40023C275 /* GameScene.sks */,
 				98E606581E5C8FF40023C275 /* Actions.sks */,
+				9805839A1E5F3E6600C86D78 /* GameScene.sks */,
+				98034F311E612347007D7C62 /* ObjectTiles.sks */,
 				98E6065A1E5C8FF40023C275 /* GameScene.swift */,
 				98E6065C1E5C8FF40023C275 /* GameViewController.swift */,
 				98E6065E1E5C8FF40023C275 /* Main.storyboard */,
 				98E606611E5C8FF50023C275 /* Assets.xcassets */,
 				98E606631E5C8FF50023C275 /* LaunchScreen.storyboard */,
 				98E606661E5C8FF50023C275 /* Info.plist */,
+				9805839C1E5F3E8200C86D78 /* Tiles.sks */,
 			);
 			path = ProjectGreen;
 			sourceTree = "<group>";
@@ -293,10 +299,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98034F321E612347007D7C62 /* ObjectTiles.sks in Resources */,
 				98E606601E5C8FF40023C275 /* Main.storyboard in Resources */,
-				98E606571E5C8FF40023C275 /* GameScene.sks in Resources */,
 				98E606621E5C8FF50023C275 /* Assets.xcassets in Resources */,
 				98E606651E5C8FF50023C275 /* LaunchScreen.storyboard in Resources */,
+				9805839D1E5F3E8200C86D78 /* Tiles.sks in Resources */,
+				9805839B1E5F3E6600C86D78 /* GameScene.sks in Resources */,
 				98E606591E5C8FF40023C275 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -721,6 +729,7 @@
 				98E606811E5C8FF50023C275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98E606821E5C8FF50023C275 /* Build configuration list for PBXNativeTarget "ProjectGreenTests" */ = {
 			isa = XCConfigurationList;
@@ -729,6 +738,7 @@
 				98E606841E5C8FF50023C275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		98E606851E5C8FF50023C275 /* Build configuration list for PBXNativeTarget "ProjectGreenUITests" */ = {
 			isa = XCConfigurationList;
@@ -737,6 +747,7 @@
 				98E606871E5C8FF50023C275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
