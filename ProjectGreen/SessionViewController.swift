@@ -13,6 +13,7 @@ import Firebase
 
 
 class SessionViewController: UIViewController {
+    @IBOutlet weak var pickerarray: UIPickerView!
     
     @IBOutlet weak var PickerView: UIPickerView!
     var ref : FIRDatabaseReference!
@@ -20,60 +21,47 @@ class SessionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         // Do any additional setup after loading the view.
     }
 
-    var myArray = ["0"]
-   
     
-    @IBAction func JoinLobby(_ sender: Any) {
+    
+    
+    
+   
+    var myArray = [String]()
+    var availableLobbyArray = [String]()
+
+
+    
+
+    @IBAction func TestButton(_ sender: Any) {
         
-        ref = FIRDatabase.database().reference().child("Lobbies")
-        //let key = String()
+        let rootRef = FIRDatabase.database().reference()
         
-        myArray.remove(at: 0)
-        
-        
-        
-        ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
-            for child in FIRDataSnap.children.allObjects {
-                let key = (child as AnyObject).key as String
-                self.myArray.append(key)
+        let availableLobbiesRef = rootRef.child("Available_Lobbies")
+        availableLobbiesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let lobbyKey = snap.key
+                self.availableLobbyArray.append(lobbyKey)
             }
-            
-            
-            
-            
-            for (_, element) in self.myArray.enumerated() {
-                self.ref.child(element).child("Players").observeSingleEvent(of: .value, with: { (Snap) in
-                    if Snap.childrenCount < 2 {
-                        print ("Joining...")
-                    }
-                    else {
-                        print ("Not Joining...")
-                    
-                    }
-                })
-                
-            }
-        
-        
-            
         })
         
-        //...
-
+        
+        
         
        
-        
-    }
-    @IBAction func PickerCheck(_ sender: Any) {
-        print (self.myArray.count)
-        
-        
     }
 
-    @IBOutlet weak var PickArray: UIPickerView!
+    
+    //end of func JoinLobby
 
+
+
+    
     
 }

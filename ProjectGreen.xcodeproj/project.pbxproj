@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		665A61791E60C1ED00685C27 /* ChooseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 665A61781E60C1ED00685C27 /* ChooseViewController.swift */; };
-		66A88E181E5F017F001789FD /* SessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66A88E171E5F017F001789FD /* SessionViewController.swift */; };
 		66A88E1B1E5F0794001789FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A88E191E5F0794001789FD /* Main.storyboard */; };
 		66BF45191E5DCFDC001CE9E9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */; };
 		66BF451B1E5DCFF9001CE9E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66BF451A1E5DCFF9001CE9E9 /* GoogleService-Info.plist */; };
@@ -47,8 +45,6 @@
 		05FCC7B2F3199301684F0785 /* Pods_ProjectGreen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12726B40980C3A2FFAB2BF88 /* Pods_ProjectGreenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5537ED5C5908DBA11F64292B /* Pods_ProjectGreenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		665A61781E60C1ED00685C27 /* ChooseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseViewController.swift; sourceTree = "<group>"; };
-		66A88E171E5F017F001789FD /* SessionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SessionViewController.swift; sourceTree = "<group>"; };
 		66A88E1A1E5F0794001789FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		66BF451A1E5DCFF9001CE9E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -147,8 +143,6 @@
 				98E6065A1E5C8FF40023C275 /* GameScene.swift */,
 				66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */,
 				98E6065C1E5C8FF40023C275 /* GameViewController.swift */,
-				66A88E171E5F017F001789FD /* SessionViewController.swift */,
-				665A61781E60C1ED00685C27 /* ChooseViewController.swift */,
 				66A88E191E5F0794001789FD /* Main.storyboard */,
 				98E606611E5C8FF50023C275 /* Assets.xcassets */,
 				98E606631E5C8FF50023C275 /* LaunchScreen.storyboard */,
@@ -475,10 +469,8 @@
 			files = (
 				66BF45191E5DCFDC001CE9E9 /* SignInViewController.swift in Sources */,
 				98E6065B1E5C8FF40023C275 /* GameScene.swift in Sources */,
-				66A88E181E5F017F001789FD /* SessionViewController.swift in Sources */,
 				98E6065D1E5C8FF40023C275 /* GameViewController.swift in Sources */,
 				98E606551E5C8FF40023C275 /* AppDelegate.swift in Sources */,
-				665A61791E60C1ED00685C27 /* ChooseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

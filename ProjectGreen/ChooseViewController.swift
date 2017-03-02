@@ -55,3 +55,67 @@
 //    
 //
 //}
+
+
+
+
+
+//
+//
+//
+//
+//@IBAction func JoinLobby(_ sender: Any) {
+//    
+//    
+//    
+//    
+//    
+//    ref = FIRDatabase.database().reference().child("Lobbies")
+//    //let key = String()
+//    
+//    
+//    
+//    
+//    
+//    
+//    self.ref.observeSingleEvent(of: .value, with: { (FIRDataSnap) in
+//        
+//        for child in FIRDataSnap.children.allObjects {
+//            let key = (child as AnyObject).key as String
+//            self.myArray.append(key)
+//        }
+//        
+//    })
+//    
+//    
+//    for (element) in self.myArray {
+//        
+//        self.ref.child(element).child("Players").observeSingleEvent(of: .value, with: { (Snap) in
+//            
+//            if Snap.childrenCount < 2 {
+//                print("Can Join lobby\(element)")
+//                self.CanJoinArray.append(element)
+//                
+//            }
+//            else {
+//                print("Can't join lobby\(element)... Full!")
+//                
+//            }
+//            
+//            
+//        }
+//        )
+//        
+//        
+//        
+//    }
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//    
+//}

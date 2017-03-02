@@ -21,37 +21,40 @@ class SignInViewController: UIViewController {
     
     let password = "adamadam"
     
-
+    var ref : FIRDatabaseReference!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
-        
     }
 
     
     @IBAction func ClickSignIn(_ sender: Any) {
         
         let email = self.email.text
+        ref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
         
         let username = self.username.text
         
         
-        FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
-            print ("Created user / user already exists! Trying to sign in")
-            
-            FIRAuth.auth()?.signIn(withEmail: (email)!, password: self.password) { (user, error) in
-                print("user signed in!")
+            FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
+                print ("Creating or signing in")
+                FIRAuth.auth()?.signIn(withEmail: (email)!, password: self.password) { (user, error) in
+                    print("user signed in!")
             }
+
         }
         
         let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
         
         changeRequest?.displayName = username
         
-        changeRequest?.commitChanges()        
+        changeRequest?.commitChanges()
+        
+        self.ref.child("Users").child(uid!).setValue(["DisplayName": username])
+        
         
         
     }

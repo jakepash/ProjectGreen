@@ -6,6 +6,7 @@
 //  Copyright © 2017 Manzanita Labs. All rights reserved.
 //
 
+
 import UIKit
 import SpriteKit
 import GameplayKit
@@ -13,108 +14,112 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 
-class GameViewController: UIViewController {
+class GameViewController: UIViewController{
     
     var ref : FIRDatabaseReference!
-    let uuid = UUID().uuidString
+    var Joinref :FIRDatabaseReference!
+    var Postref :FIRDatabaseReference!
 
     @IBOutlet weak var LobbyName: UITextField!
+    
+    var availableLobbyArray = [String]()
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.CreateArrayCanJoinLobbies()
         
-        // Load 'GameScene.sks' as a GKScene. This provides gameplay related content
-        // including entities and graphs.
-        if let scene = GKScene(fileNamed: "GameScene") {
-            
-            // Get the SKScene from the loaded GKScene
-            if let sceneNode = scene.rootNode as! GameScene? {
-                
-                // Copy gameplay related content over to the scene
-                sceneNode.entities = scene.entities
-                sceneNode.graphs = scene.graphs
-                
-                // Set the scale mode to scale to fit the window
-                sceneNode.scaleMode = .aspectFill
-                
-                // Present the scene
-                if let view = self.view as! SKView? {
-                    view.presentScene(sceneNode)
-                    
-                    view.ignoresSiblingOrder = true
-                    
-                    view.showsFPS = true
-                    view.showsNodeCount = true
-                }
-            }
-        }
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(GameViewController.dismissKeyboard))
+        
+        //Uncomment the line below if you want the tap not not interfere and cancel other interactions.
+        //tap.cancelsTouchesInView = false
+        
+        view.addGestureRecognizer(tap)
+        
+        print ("Loaded")
+    }      
+        
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
+    
 
-    override var shouldAutorotate: Bool {
-        return true
-    }
-
-    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
-        if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
-        } else {
-            return .all
-        }
-    }
+    
     
    
 
-    
-    @IBAction func PushDatabase(_ sender: Any) {
+    @IBAction func CreateLobby(_ sender: Any) {
         
         ref = FIRDatabase.database().reference()
         
         let user = FIRAuth.auth()?.currentUser
-        let displayName = user?.displayName
         let uid = user?.uid
+        
+        let LobbyNameStr = self.LobbyName.text
+        
+        if LobbyNameStr == "" {
+        
+            print ("At least 1 character")
+        
+        }
+        
+        else {
+            self.ref.child("Lobbies").child(LobbyNameStr!).child("players").child(uid!).setValue(["uid_0": uid!])
+            self.ref.child("Available_Lobbies").child(LobbyNameStr!).setValue(["CanJoin": true])
+        }
+        
+        
+        
+        
+    }
+    
+    func CreateArrayCanJoinLobbies() {
+    
+        Postref = FIRDatabase.database().reference()
+        
+        let availableLobbiesRef = Postref.child("Available_Lobbies")
+        
+        
+        availableLobbiesRef.observeSingleEvent(of: .value, with: { (snapshot) in
+            
+            for child in snapshot.children {
+                let snap = child as! FIRDataSnapshot
+                let lobbyKey = snap.key
+                self.availableLobbyArray.append(lobbyKey)
+            }
+        })
+    
+    
+    }
+    
+    @IBAction func JoinLobbyButton(_ sender: Any) {
+        
+        self.CreateArrayCanJoinLobbies()
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
+        
+        Joinref = FIRDatabase.database().reference()
+        
+        let LobbyNameStr = self.LobbyName.text
+        
+        
+        if self.availableLobbyArray.contains(LobbyNameStr!) {
+        
+            self.Joinref.child("Lobbies").child(LobbyNameStr!).child("players").child(uid!).setValue(["uid_1": uid!])
+            self.Joinref.child("Available_Lobbies").child(LobbyNameStr!).removeValue()
+        
+        }
+        else {
+        
+            print ("No such Lobby")
+            print (self.availableLobbyArray)
+        }
+            
+      }
 
-        
-        self.ref.child("Users").child(uid!).setValue(["DisplayName": displayName])
-        
-        
-    }
     
     
-    
-    
-    // create new lobby
-    @IBAction func LobbyCreate(_ sender: Any) {
-        
-        
-        
-        ref = FIRDatabase.database().reference()
-        
-            let user = FIRAuth.auth()?.currentUser
-            let displayName = user?.displayName
-            let uid = user?.uid
-        
-            let LobbyNameStr = self.LobbyName.text
-
-            self.ref.child("Lobbies").child(self.uuid).child("Players").setValue(["user1": uid])
-            self.ref.child("Lobbies").child(self.uuid).child("LobbyName").setValue(["LobbyName": LobbyNameStr])
-            self.ref.child("Users").child(uid!).setValue(["DisplayName": displayName])
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-}
+  }
