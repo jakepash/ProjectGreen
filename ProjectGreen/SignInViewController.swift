@@ -28,11 +28,16 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         
-        
+
         
                 
     }
+    
+    
+    
+    
     
     
     
@@ -40,8 +45,7 @@ class SignInViewController: UIViewController {
         
         let email = self.email.text
         ref = FIRDatabase.database().reference()
-        let user = FIRAuth.auth()?.currentUser
-        let uid = user?.uid
+        
         
         let username = self.username.text
         
@@ -49,7 +53,14 @@ class SignInViewController: UIViewController {
         FIRAuth.auth()?.createUser(withEmail: (email)!, password: password) { (user, error) in
             print ("Creating User")
         }
+        FIRAuth.auth()?.signIn(withEmail: (email)!, password: password) { (user, error) in
+            print ("Signed In inside SignInViewController.swift")
+        }
         UserDefaults.standard.set(email, forKey: "email")
+        
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+        
         let changeRequest = FIRAuth.auth()?.currentUser?.profileChangeRequest()
         
         changeRequest?.displayName = username
@@ -69,16 +80,6 @@ class SignInViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

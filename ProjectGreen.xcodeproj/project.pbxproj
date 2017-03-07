@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		664EC8711E6962030059D2BA /* QRViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 664EC8701E6962030059D2BA /* QRViewerViewController.swift */; };
 		669E93061E6874A400C2C17F /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669E93051E6874A400C2C17F /* FirstViewController.swift */; };
 		66A88E1B1E5F0794001789FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66A88E191E5F0794001789FD /* Main.storyboard */; };
 		66BF45191E5DCFDC001CE9E9 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */; };
 		66BF451B1E5DCFF9001CE9E9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 66BF451A1E5DCFF9001CE9E9 /* GoogleService-Info.plist */; };
+		66CF94581E6C39A500CF3034 /* InLobbyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CF94571E6C39A500CF3034 /* InLobbyViewController.swift */; };
 		98E606551E5C8FF40023C275 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E606541E5C8FF40023C275 /* AppDelegate.swift */; };
 		98E606571E5C8FF40023C275 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 98E606561E5C8FF40023C275 /* GameScene.sks */; };
 		98E606591E5C8FF40023C275 /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 98E606581E5C8FF40023C275 /* Actions.sks */; };
@@ -45,10 +47,12 @@
 		05FCC7B2F3199301684F0785 /* Pods_ProjectGreen.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreen.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		12726B40980C3A2FFAB2BF88 /* Pods_ProjectGreenUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreenUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5537ED5C5908DBA11F64292B /* Pods_ProjectGreenTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProjectGreenTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		664EC8701E6962030059D2BA /* QRViewerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewerViewController.swift; sourceTree = "<group>"; };
 		669E93051E6874A400C2C17F /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		66A88E1A1E5F0794001789FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		66BF451A1E5DCFF9001CE9E9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		66CF94571E6C39A500CF3034 /* InLobbyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InLobbyViewController.swift; sourceTree = "<group>"; };
 		6A57A45F00161A8702ED7F8B /* Pods-ProjectGreenUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreenUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreenUITests/Pods-ProjectGreenUITests.release.xcconfig"; sourceTree = "<group>"; };
 		74F4A61515DDE77B2A3D3013 /* Pods-ProjectGreen.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreen.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreen/Pods-ProjectGreen.debug.xcconfig"; sourceTree = "<group>"; };
 		988255E0800975DBE63C872F /* Pods-ProjectGreenTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProjectGreenTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ProjectGreenTests/Pods-ProjectGreenTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +147,8 @@
 				66BF45181E5DCFDC001CE9E9 /* SignInViewController.swift */,
 				98E6065C1E5C8FF40023C275 /* GameViewController.swift */,
 				669E93051E6874A400C2C17F /* FirstViewController.swift */,
+				664EC8701E6962030059D2BA /* QRViewerViewController.swift */,
+				66CF94571E6C39A500CF3034 /* InLobbyViewController.swift */,
 				66A88E191E5F0794001789FD /* Main.storyboard */,
 				98E606611E5C8FF50023C275 /* Assets.xcassets */,
 				98E606631E5C8FF50023C275 /* LaunchScreen.storyboard */,
@@ -468,6 +474,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				66BF45191E5DCFDC001CE9E9 /* SignInViewController.swift in Sources */,
+				664EC8711E6962030059D2BA /* QRViewerViewController.swift in Sources */,
+				66CF94581E6C39A500CF3034 /* InLobbyViewController.swift in Sources */,
 				98E6065D1E5C8FF40023C275 /* GameViewController.swift in Sources */,
 				98E606551E5C8FF40023C275 /* AppDelegate.swift in Sources */,
 				669E93061E6874A400C2C17F /* FirstViewController.swift in Sources */,

@@ -13,7 +13,7 @@ import GameplayKit
 import Firebase
 import FirebaseDatabase
 import FirebaseAuth
-//import QRCode
+import QRCode
 
 
 class GameViewController: UIViewController{
@@ -21,6 +21,8 @@ class GameViewController: UIViewController{
     var ref : FIRDatabaseReference!
     var Joinref :FIRDatabaseReference!
     var Postref :FIRDatabaseReference!
+    var Leaveref :FIRDatabaseReference!
+    let joinedSession = String()
     let password = "adamadam"
 
     @IBOutlet weak var LobbyName: UITextField!
@@ -65,6 +67,7 @@ class GameViewController: UIViewController{
         let user = FIRAuth.auth()?.currentUser
         let uid = user?.uid
         
+        
         let LobbyNameStr = self.LobbyName.text
         
         if LobbyNameStr == "" {
@@ -76,7 +79,16 @@ class GameViewController: UIViewController{
         else {
             self.ref.child("Lobbies").child(LobbyNameStr!).child("players").child(uid!).setValue(["uid_0": uid!])
             self.ref.child("Available_Lobbies").child(LobbyNameStr!).setValue(["CanJoin": true])
+            let url = LobbyNameStr
+            imageView.image = {
+                var qrCode = QRCode(url!)!
+                qrCode.size = self.imageView.bounds.size
+                return qrCode.image
+            }()
         }
+        
+        
+        
         
         
         
@@ -119,15 +131,30 @@ class GameViewController: UIViewController{
         
             self.Joinref.child("Lobbies").child(LobbyNameStr!).child("players").child(uid!).setValue(["uid_1": uid!])
             self.Joinref.child("Available_Lobbies").child(LobbyNameStr!).removeValue()
-        
+            let joinedSession = LobbyNameStr!
+            
         }
         else {
         
             print ("No such Lobby")
             print (self.availableLobbyArray)
         }
+        
             
       }
+    
+    
+    func leaveLobby() {
+        
+        
+        Leaveref = FIRDatabase.database().reference()
+        let user = FIRAuth.auth()?.currentUser
+        let uid = user?.uid
+    
+        print (joinedSession)
+        //self.Leaveref.child("Lobbies").child(joinedSession).child("Players").child(uid!).removeValue()
+    
+    }
     
     
     // QR codes...
@@ -135,15 +162,28 @@ class GameViewController: UIViewController{
 //        
 //        let LobbyNameStr = self.LobbyName.text
 //        
-//        let url = "https://myproject-e9dfb.firebaseio.com/Lobbies/\(LobbyNameStr!)/.json"
+//        let url = LobbyNameStr
 //        
+//        if url == "" {
+//        
+//            print ("You need at least 1 character.")
+//        
+//        
+//        }
+//
+//        else if (url?.characters.count)! > 20 {
+//            
+//            print ("No more then 20 characters")
+//            
+//        }
+//        else {
 //        imageView.image = {
-//            var qrCode = QRCode(url)!
+//            var qrCode = QRCode(url!)!
 //            qrCode.size = self.imageView.bounds.size
-//            qrCode.color = CIColor(rgba: "2980b9")
+//            qrCode.color = CIColor(rgba: "00b2ee")
 //            return qrCode.image
 //        }()
-//        
+//        }
 //    }
 
     
@@ -155,7 +195,7 @@ class GameViewController: UIViewController{
         print (keychain!)
         
         FIRAuth.auth()?.signIn(withEmail: (keychain)!, password: password) { (user, error) in
-            print ("Signed in with user: \(user)")
+            print ("Signed in with user: \(keychain!)")
         }
         
         
