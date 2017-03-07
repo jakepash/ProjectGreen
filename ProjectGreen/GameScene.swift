@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import UIKit
 
 class GameScene: SKScene {
     
@@ -15,8 +16,8 @@ class GameScene: SKScene {
     var objectsTileMap:SKTileMapNode!
     
     // constants
-    let waterMaxSpeed: CGFloat = 200
-    let landMaxSpeed: CGFloat = 4000
+    let waterMaxSpeed: CGFloat = 50
+    let landMaxSpeed: CGFloat = 200
     
     // if within threshold range of the target, troop begins slowing
     let targetThreshold:CGFloat = 200
@@ -41,17 +42,17 @@ class GameScene: SKScene {
     }
     
     func loadSceneNodes() {
-        //troop = createNode1(imageNamed: "Circle", name: "troop", pos: targetLocation)
-//        var circle = SKTexture(image: UIImage(named: "Circle")!)
+        //troop = createNode1(imageNamed: "TankA", name: "troop", pos: targetLocation)
+//        var circle = SKTexture(image: UIImage(named: "TankA")!)
 //        var troop = SKSpriteNode(texture: circle)
 //        troop.position = targetLocation
 //        troop.size = CGSize(width: 75, height: 75)
-//        
+//
         guard let troop = childNode(withName: "troop") as? SKSpriteNode else {
             fatalError("Sprite Nodes not loaded")
         }
         self.troop = troop
-        
+//        
         
         
         
@@ -80,24 +81,41 @@ class GameScene: SKScene {
         let sprite = SKSpriteNode(imageNamed: imageNamed)
         sprite.position = pos
         sprite.zPosition = 3.0
-        sprite.size = CGSize(width: 100, height: 100)
+        sprite.size = CGSize(width: 300, height: 300)
         
         addChild(sprite)
         return sprite
     }
     
-    
+    var selectedTroops = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        targetLocation = touch.location(in: self)
+        if selectedTroops == true {
+            targetLocation = touch.location(in: self)
+            let generator = UIImpactFeedbackGenerator(style: .heavy)
+            generator.impactOccurred()
+        }
+        troop.texture = SKTexture(image: UIImage(named: "TankA")!)
         print(targetLocation)
-        print("touches began")
+        print("touches began")  
+        selectedTroops = false
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first else { return }
-        targetLocation = touch.location(in: self)
-        print("touches moved")
+        print(touch.location(in: self))
+        //let touch:UITouch = touches.anyObject()! as UITouch
+        let positionInScene = touch.location(in: self)
+        let touchedNode = self.atPoint(positionInScene)
+        print(touchedNode.name)
+        if let name = touchedNode.name{
+            if name == "troop" {
+                selectedTroops = true
+                troop.texture = SKTexture(image: UIImage(named: "TankA_Selected")!)
+            }
+        }
+        //print("touches moved")
     }
     
     
@@ -107,13 +125,13 @@ class GameScene: SKScene {
         let row = landBackground.tileRowIndex(fromPosition: position)
         let tile = landBackground.tileDefinition(atColumn: column, row: row)
         
-        if tile == nil {
-            maxSpeed = waterMaxSpeed
-            //print("water")
-        } else {
-            maxSpeed = landMaxSpeed
-            //print("grass")
-        }
+//        if tile == nil {
+//            maxSpeed = waterMaxSpeed
+//            //print("water")
+//        } else {
+//            maxSpeed = landMaxSpeed
+//            //print("grass")
+//        }
     }
     override func didSimulatePhysics() {
         
